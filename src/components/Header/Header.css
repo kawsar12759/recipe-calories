@@ -1,0 +1,18 @@
+.header-section {
+    height: 650px;
+    background-image: url('../../images/cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.explore-btn{
+    background-color: #0BE58A;
+    color: #150B2B;
+}
+
+.feedback-btn{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
