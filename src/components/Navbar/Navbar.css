@@ -2,3 +2,17 @@
     text-decoration: none;
     margin-right: 35px;
 }
+
+.search-container{
+    position: relative;
+}
+
+.search-btn {
+    position: absolute;
+    top: 50%;
+    right: 255px;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+  }
+

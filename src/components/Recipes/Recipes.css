@@ -1,0 +1,8 @@
+.recipes-para-text {
+    color: rgb(21, 11, 43, 0.6);
+}
+
+.recipes-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}

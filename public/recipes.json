@@ -1,0 +1,102 @@
+[
+    {
+        "recipe_id": "1",
+        "recipe_name": "Chicken Stir-Fry",
+        "recipe_image": "https://i.ibb.co/zPM2sfy/stir-fry-chicken-zucchini-sweet-peppers-green-onion-1.jpg",
+        "short_description": "A quick and easy chicken stir-fry with vegetables.",
+        "ingredients": [
+            "550 g chicken breast",
+            "120 ml soy sauce",
+            "200 g broccoli florets",
+            "100 g bell peppers",
+            "2 cloves garlic, minced",
+            "2 tbsp olive oil"
+        ],
+        "preparing_time": "30 min",
+        "calories": "320 calories"
+    },
+    {
+        "recipe_id": "2",
+        "recipe_name": "Spaghetti Carbonara",
+        "recipe_image": "https://i.ibb.co/jZv7RpX/cooked-italian-pasta-with-lemon-slices-inside-blue-plate-with-oil-vegetables-blue-1.jpg",
+        "short_description": "Classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+        "ingredients": [
+            "400 g spaghetti",
+            "200 g pancetta",
+            "2 large eggs",
+            "100 g Parmesan cheese, grated",
+            "2 cloves garlic, minced",
+            "Salt and black pepper to taste"
+        ],
+        "preparing_time": "25 min",
+        "calories": "450 calories"
+    },
+    {
+        "recipe_id": "3",
+        "recipe_name": "Vegan Buddha Bowl",
+        "recipe_image": "https://i.ibb.co/GCFQHMS/healthy-vegetarian-balanced-food-concept-fresh-vegetable-salad-buddha-bowl-2.jpg",
+        "short_description": "A healthy and colorful bowl packed with quinoa, veggies, and a creamy tahini dressing.",
+        "ingredients": [
+            "200 g quinoa",
+            "150 g chickpeas",
+            "100 g baby spinach",
+            "1 avocado, sliced",
+            "100 g roasted sweet potatoes",
+            "2 tbsp tahini",
+            "1 tbsp lemon juice"
+        ],
+        "preparing_time": "40 min",
+        "calories": "380 calories"
+    },
+    {
+        "recipe_id": "4",
+        "recipe_name": "Grilled Salmon",
+        "recipe_image": "https://i.ibb.co/pbfNBN1/grilled-salmon-fillet-with-asparagus-broccoli-generated-by-ai-2.jpg",
+        "short_description": "Perfectly grilled salmon with a lemon and herb marinade.",
+        "ingredients": [
+            "4 salmon fillets",
+            "2 tbsp olive oil",
+            "1 lemon, juiced",
+            "2 cloves garlic, minced",
+            "1 tbsp fresh dill, chopped",
+            "Salt and pepper to taste"
+        ],
+        "preparing_time": "20 min",
+        "calories": "350 calories"
+    },
+    {
+        "recipe_id": "5",
+        "recipe_name": "Chocolate Chip Cookies",
+        "recipe_image": "https://i.ibb.co/q1XnG1M/chocolate-chip-gluten-free-cookies-1.jpg",
+        "short_description": "Classic homemade chocolate chip cookies with crispy edges and soft centers.",
+        "ingredients": [
+            "250 g all-purpose flour",
+            "125 g butter",
+            "150 g brown sugar",
+            "100 g granulated sugar",
+            "1 large egg",
+            "200 g chocolate chips",
+            "1/2 tsp baking soda",
+            "1/4 tsp salt"
+        ],
+        "preparing_time": "45 min",
+        "calories": "200 calories per cookie"
+    },
+    {
+        "recipe_id": "6",
+        "recipe_name": "Greek Salad",
+        "recipe_image": "https://i.ibb.co/J5LsYQs/salad-with-tomatoes-cheese-cilantro-sweet-sour-sauce-georgian-cuisine-healthy-food-1.jpg",
+        "short_description": "A refreshing salad with cucumbers, tomatoes, olives, and feta cheese.",
+        "ingredients": [
+            "200 g cucumbers, sliced",
+            "150 g cherry tomatoes, halved",
+            "100 g feta cheese, crumbled",
+            "1 red onion, thinly sliced",
+            "2 tbsp olive oil",
+            "1 tbsp red wine vinegar",
+            "Salt and pepper to taste"
+        ],
+        "preparing_time": "15 min",
+        "calories": "220 calories"
+    }
+]

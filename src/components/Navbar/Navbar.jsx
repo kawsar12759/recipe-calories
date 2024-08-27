@@ -15,7 +15,11 @@ const Navbar = () => {
                 <a className='nav-item' href="">Search</a>
             </div>
             <div className='flex'>
-                <input className='search-input bg-gray-100 py-3 rounded-3xl px-4 mr-4' type="text" placeholder='Search' />
+                <div className='search-container'>
+                    <button className='search-btn'><i className="fa-solid fa-magnifying-glass bg-gray-100 text-gray-500"></i></button>
+                    <input className='search-input bg-gray-100 py-3 rounded-3xl px-9 mr-4' type="text" placeholder='Search' />
+
+                </div>
                 <img className='w-12' src={profile} alt="" />
             </div>
         </div>
