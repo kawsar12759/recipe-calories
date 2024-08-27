@@ -1,9 +1,42 @@
 import { useEffect, useState } from 'react';
 import './Recipes.css'
 import Recipe from '../Recipe/Recipe';
-
+import WantTOCook from '../WantToCook/WantTOCook';
+import CurrentlyCooking from '../CurrentlyCooking/CurrentlyCooking';
+let countWanToCook = 0;
+let countCurrentlyCooking = 0;
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
+    const [wantToCookRecipes, setWantToCookRecipes] = useState([]);
+    const [currentlyCookingRecipes, setCurrentlyCookingRecipes] = useState([]);
+
+    const handleWantToCookBtn = recipe => {
+        countWanToCook++;
+        recipe.serial = countWanToCook;
+        const newWantToCookRecipes = [...wantToCookRecipes, recipe];
+        setWantToCookRecipes(newWantToCookRecipes);
+
+    }
+
+function arrangeOrder(unorderedRecipes){
+    let count =0;
+    unorderedRecipes.forEach(recipe => {
+        count++;
+        recipe.serial=count;
+    })
+    return unorderedRecipes;
+}
+
+    const handlePrepareBtn = recipe => {
+
+        countCurrentlyCooking++;
+        recipe.serial = countCurrentlyCooking;
+        const newCurrentlyCookingRecipes = [...currentlyCookingRecipes, recipe];
+        const updatedWantToCookRecipes = wantToCookRecipes.filter(rec => rec.recipe_id !== recipe.recipe_id);
+        const orderedUpdatedWantToCookRecipes = arrangeOrder(updatedWantToCookRecipes);
+        setWantToCookRecipes(orderedUpdatedWantToCookRecipes);
+        setCurrentlyCookingRecipes(newCurrentlyCookingRecipes);
+    }
     useEffect(() => {
         fetch('../../../public/recipes.json')
             .then(res => res.json())
@@ -17,17 +50,17 @@ const Recipes = () => {
             <div className='w-100 flex'>
                 <div className='recipes-container w-3/5'>
                     {
-                        recipes.map(recipe => <Recipe key={recipe.recipe_id} recipe={recipe}></Recipe>)
+                        recipes.map(recipe => <Recipe key={recipe.recipe_id} recipe={recipe} handleWantToCookBtn={handleWantToCookBtn}></Recipe>)
                     }
                 </div>
                 <div className='border-2  h-96 w-2/5 ml-7 rounded-lg'>
-                    <h1 className='text-2xl font-semibold text-center my-6'>Want to Cook: </h1>
+                    <h1 className='text-2xl font-semibold text-center mt-6 mb-4'>Want to Cook: {wantToCookRecipes.length < 10 ? '0' + wantToCookRecipes.length : wantToCookRecipes.length}</h1>
                     <div className='flex justify-center'>
                         <hr className='w-3/4' />
                     </div>
                     <table className='table-auto w-full'>
                         <thead className='text-base font-medium'>
-                            <tr className='text-left'>
+                            <tr className='text-left h-16'>
                                 <th className='w-1/12'></th>
                                 <th>Name</th>
                                 <th>Time</th>
@@ -36,16 +69,41 @@ const Recipes = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='text-center'>1</td>
-                                <td>Chicken Caesar Salad</td>
-                                <td>20 minutes</td>
-                                <td>400 calories</td>
-                                <td><button>Preparing</button></td>
-                            </tr>
+                            {
+                                wantToCookRecipes.map(recipe => <WantTOCook key={recipe.recipe_id} wantToCookRecipes={recipe} handlePrepareBtn={handlePrepareBtn}></WantTOCook>)
+                            }
+
                         </tbody>
 
                     </table>
+                    <h1 className='text-2xl font-semibold text-center mt-8 mb-4'>Currently cooking: {currentlyCookingRecipes.length < 10 ? '0' + currentlyCookingRecipes.length : currentlyCookingRecipes.length}</h1>
+                    <div className='flex justify-center'>
+                        <hr className='w-3/4' />
+                    </div>
+                    <table className='table-auto w-full'>
+                        <thead className='text-base font-medium'>
+                            <tr className='text-left h-16'>
+                                <th className='w-1/12'></th>
+                                <th>Name</th>
+                                <th>Time</th>
+                                <th className=''>Calories</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                currentlyCookingRecipes.map(recipe => <CurrentlyCooking key={recipe.recipe_id} currentlyCookingRecipe={recipe}></CurrentlyCooking>)
+                            }
+                            <tr className='text-base font-medium total-time-calories h-16'>
+                                <td></td>
+                                <td className='w-2/5'></td>
+                                <td>45 Minutes</td>
+                                <td>1022 Calories</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
                 </div>
             </div>
         </div>

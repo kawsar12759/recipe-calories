@@ -1,5 +1,5 @@
 import './Recipe.css'
-const Recipe = ({ recipe }) => {
+const Recipe = ({ recipe, handleWantToCookBtn }) => {
     const { recipe_image, recipe_name, short_description, ingredients, preparing_time, calories } = recipe
     return (
         <div className="border-2 p-5 rounded-lg">
@@ -27,7 +27,7 @@ const Recipe = ({ recipe }) => {
                         <p>{calories}</p>
                     </div>
                 </div>
-                <button className='want-to-cook-btn py-3 px-6 text-lg font-medium rounded-full mr-7'>Want to Cook</button>
+                <button onClick={() => handleWantToCookBtn(recipe)} className='want-to-cook-btn py-3 px-6 text-lg font-medium rounded-full mr-7'>Want to Cook</button>
 
             </div>
         </div>
