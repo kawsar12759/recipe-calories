@@ -13,7 +13,7 @@ const Recipes = () => {
     return (
         <div>
             <h3 className="text-4xl font-semibold text-center mb-6">Our Recipes</h3>
-            <p className="recipes-para-text text-base text-center px-24 mb-8">Discover a world of deliciousness with our curated collection of recipes. From quick and easy weeknight meals to gourmet feasts, we have something to satisfy every craving. Our recipes are designed to be easy to follow and packed with flavor. Let's cook together!</p>
+            <p className="recipes-para-text text-base text-center px-24 mb-12">Discover a world of deliciousness with our curated collection of recipes. From quick and easy weeknight meals to gourmet feasts, we have something to satisfy every craving. Our recipes are designed to be easy to follow and packed with flavor. Let's cook together!</p>
             <div className='w-100 flex'>
                 <div className='recipes-container w-3/5'>
                     {

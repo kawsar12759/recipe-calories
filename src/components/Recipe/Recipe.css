@@ -1,0 +1,25 @@
+.recipe-img {
+    height: 200px;
+    width: 100%;
+}
+
+.recipe-short-description {
+    color: #878787;
+}
+
+.hr-line {
+    color: rgba(40, 40, 40, 0.1);
+}
+
+.ingredients-list {
+    color: #878787;
+}
+
+.time-and-calorie {
+    color: rgba(40, 40, 40, 0.8);
+}
+
+.want-to-cook-btn {
+    background-color: #0BE58A;
+    color: #150B2B;
+}

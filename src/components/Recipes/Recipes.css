@@ -2,7 +2,8 @@
     color: rgb(21, 11, 43, 0.6);
 }
 
-.recipes-container{
+.recipes-container {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
