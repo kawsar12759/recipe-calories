@@ -20,8 +20,32 @@ const Recipes = () => {
                         recipes.map(recipe => <Recipe key={recipe.recipe_id} recipe={recipe}></Recipe>)
                     }
                 </div>
-                <div className='border-2  h-96 w-2/5 ml-7'>
+                <div className='border-2  h-96 w-2/5 ml-7 rounded-lg'>
+                    <h1 className='text-2xl font-semibold text-center my-6'>Want to Cook: </h1>
+                    <div className='flex justify-center'>
+                        <hr className='w-3/4' />
+                    </div>
+                    <table className='table-auto w-full'>
+                        <thead className='text-base font-medium'>
+                            <tr className='text-left'>
+                                <th className='w-1/12'></th>
+                                <th>Name</th>
+                                <th>Time</th>
+                                <th>Calories</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className='text-center'>1</td>
+                                <td>Chicken Caesar Salad</td>
+                                <td>20 minutes</td>
+                                <td>400 calories</td>
+                                <td><button>Preparing</button></td>
+                            </tr>
+                        </tbody>
 
+                    </table>
                 </div>
             </div>
         </div>

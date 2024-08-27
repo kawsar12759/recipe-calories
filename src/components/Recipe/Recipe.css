@@ -1,5 +1,5 @@
 .recipe-img {
-    height: 200px;
+    height: 220px;
     width: 100%;
 }
 
@@ -22,4 +22,9 @@
 .want-to-cook-btn {
     background-color: #0BE58A;
     color: #150B2B;
+}
+
+
+thead{
+    color: #878787;
 }
