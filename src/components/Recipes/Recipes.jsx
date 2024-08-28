@@ -3,8 +3,6 @@ import './Recipes.css'
 import Recipe from '../Recipe/Recipe';
 import WantTOCook from '../WantToCook/WantTOCook';
 import CurrentlyCooking from '../CurrentlyCooking/CurrentlyCooking';
-let countWanToCook = 0;
-let countCurrentlyCooking = 0;
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [wantToCookRecipes, setWantToCookRecipes] = useState([]);
@@ -13,41 +11,53 @@ const Recipes = () => {
     const [totalCalories, setTotalCalories] = useState(0);
 
     const handleWantToCookBtn = recipe => {
-        countWanToCook++;
-        recipe.serial = countWanToCook;
         const newWantToCookRecipes = [...wantToCookRecipes, recipe];
-        setWantToCookRecipes(newWantToCookRecipes);
+        const updatedNewWantToCookRecipes = arrangeOrderOfWantToCook(newWantToCookRecipes);
+        setWantToCookRecipes(updatedNewWantToCookRecipes);
 
     }
 
-function arrangeOrder(unorderedRecipes){
-    let count =0;
-    unorderedRecipes.forEach(recipe => {
-        count++;
-        recipe.serial=count;
-    })
-    return unorderedRecipes;
-}
+    function createDeepCopy(object) {
+        return JSON.parse(JSON.stringify(object));
+      }
+
+    function arrangeOrderOfWantToCook(unorderedRecipes) {
+        let count = 0;
+        unorderedRecipes.forEach(recipe => {
+            count++;
+            recipe.serialOfWantToCook = count;
+        })
+        return unorderedRecipes;
+    }
+
+    function arrangeOrderOfCurrentlyCook(unorderedRecipes) {
+        let count = 0;
+        unorderedRecipes.forEach(recipe => {
+            count++;
+            recipe.serialOfCurrentlyCook = count;
+        })
+        return unorderedRecipes;
+
+    }
 
     const handlePrepareBtn = recipe => {
-
-        countCurrentlyCooking++;
-        recipe.serial = countCurrentlyCooking;
+        delete recipe.serialOfWantToCook;
 
         let numericPartOfTime = recipe.preparing_time.match(/\d+/);
         const time = parseInt(numericPartOfTime[0]);
-        setTotalTime(totalTime+time);
+        setTotalTime(totalTime + time);
 
         let numericPartOfCalories = recipe.calories.match(/\d+/);
         const calories = parseInt(numericPartOfCalories[0]);
-        setTotalCalories(totalCalories+calories);
+        setTotalCalories(totalCalories + calories);
+        const deepCopiedRecipe = createDeepCopy(recipe);
 
-
-        const newCurrentlyCookingRecipes = [...currentlyCookingRecipes, recipe];
+        const newCurrentlyCookingRecipes = [...currentlyCookingRecipes, deepCopiedRecipe];
         const updatedWantToCookRecipes = wantToCookRecipes.filter(rec => rec.recipe_id !== recipe.recipe_id);
-        const orderedUpdatedWantToCookRecipes = arrangeOrder(updatedWantToCookRecipes);
+        const orderedUpdatedWantToCookRecipes = arrangeOrderOfWantToCook(updatedWantToCookRecipes);
+        const orderedNewCurrentlyCookingRecipes = arrangeOrderOfCurrentlyCook(newCurrentlyCookingRecipes);
         setWantToCookRecipes(orderedUpdatedWantToCookRecipes);
-        setCurrentlyCookingRecipes(newCurrentlyCookingRecipes);
+        setCurrentlyCookingRecipes(orderedNewCurrentlyCookingRecipes);
     }
     useEffect(() => {
         fetch('../../../public/recipes.json')
@@ -103,7 +113,7 @@ function arrangeOrder(unorderedRecipes){
                         </thead>
                         <tbody>
                             {
-                                currentlyCookingRecipes.map(recipe => <CurrentlyCooking key={recipe.recipe_id} currentlyCookingRecipe={recipe}></CurrentlyCooking>)
+                                currentlyCookingRecipes.map((recipe, idx) => <CurrentlyCooking key={idx} currentlyCookingRecipe={recipe}></CurrentlyCooking>)
                             }
                             <tr className='text-base font-medium total-time-calories h-16'>
                                 <td></td>
