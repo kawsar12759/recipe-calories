@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className='flex items-center justify-between mb-8'>
             <div>
-                <h3 className="text-3xl font-bold">Recipe Calories</h3>
+                <h3 className="text-3xl font-bold">Recipe Caloriz</h3>
             </div>
             <div className="nav-link text-base">
                 <a className='nav-item' href="">Home</a>

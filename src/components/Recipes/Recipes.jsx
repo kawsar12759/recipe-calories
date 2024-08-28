@@ -26,7 +26,6 @@ const Recipes = () => {
             }
         })
         if (!matched) {
-            console.log('hoho');
             const newWantToCookRecipes = [...wantToCookRecipes, recipe];
             const updatedNewWantToCookRecipes = arrangeOrderOfWantToCook(newWantToCookRecipes);
             setWantToCookRecipes(updatedNewWantToCookRecipes);
@@ -79,7 +78,7 @@ const Recipes = () => {
         setCurrentlyCookingRecipes(orderedNewCurrentlyCookingRecipes);
     }
     useEffect(() => {
-        fetch('../../../public/recipes.json')
+        fetch('recipes.json')
             .then(res => res.json())
             .then(data => setRecipes(data));
     }, [])
