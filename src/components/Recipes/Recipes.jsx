@@ -9,6 +9,8 @@ const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [wantToCookRecipes, setWantToCookRecipes] = useState([]);
     const [currentlyCookingRecipes, setCurrentlyCookingRecipes] = useState([]);
+    const [totalTime, setTotalTime] = useState(0);
+    const [totalCalories, setTotalCalories] = useState(0);
 
     const handleWantToCookBtn = recipe => {
         countWanToCook++;
@@ -31,6 +33,16 @@ function arrangeOrder(unorderedRecipes){
 
         countCurrentlyCooking++;
         recipe.serial = countCurrentlyCooking;
+
+        let numericPartOfTime = recipe.preparing_time.match(/\d+/);
+        const time = parseInt(numericPartOfTime[0]);
+        setTotalTime(totalTime+time);
+
+        let numericPartOfCalories = recipe.calories.match(/\d+/);
+        const calories = parseInt(numericPartOfCalories[0]);
+        setTotalCalories(totalCalories+calories);
+
+
         const newCurrentlyCookingRecipes = [...currentlyCookingRecipes, recipe];
         const updatedWantToCookRecipes = wantToCookRecipes.filter(rec => rec.recipe_id !== recipe.recipe_id);
         const orderedUpdatedWantToCookRecipes = arrangeOrder(updatedWantToCookRecipes);
@@ -53,7 +65,7 @@ function arrangeOrder(unorderedRecipes){
                         recipes.map(recipe => <Recipe key={recipe.recipe_id} recipe={recipe} handleWantToCookBtn={handleWantToCookBtn}></Recipe>)
                     }
                 </div>
-                <div className='border-2  h-96 w-2/5 ml-7 rounded-lg'>
+                <div className='border-2 h-fit w-2/5 ml-7 rounded-lg'>
                     <h1 className='text-2xl font-semibold text-center mt-6 mb-4'>Want to Cook: {wantToCookRecipes.length < 10 ? '0' + wantToCookRecipes.length : wantToCookRecipes.length}</h1>
                     <div className='flex justify-center'>
                         <hr className='w-3/4' />
@@ -80,7 +92,7 @@ function arrangeOrder(unorderedRecipes){
                     <div className='flex justify-center'>
                         <hr className='w-3/4' />
                     </div>
-                    <table className='table-auto w-full'>
+                    <table className='table-auto w-full mb-24'>
                         <thead className='text-base font-medium'>
                             <tr className='text-left h-16'>
                                 <th className='w-1/12'></th>
@@ -96,8 +108,8 @@ function arrangeOrder(unorderedRecipes){
                             <tr className='text-base font-medium total-time-calories h-16'>
                                 <td></td>
                                 <td className='w-2/5'></td>
-                                <td>45 Minutes</td>
-                                <td>1022 Calories</td>
+                                <td>{totalTime} minutes</td>
+                                <td>{totalCalories} calories</td>
                             </tr>
 
                         </tbody>
