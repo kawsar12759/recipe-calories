@@ -6,13 +6,24 @@
     background-position: center;
 }
 
-.explore-btn{
+.explore-btn {
     background-color: #0BE58A;
     color: #150B2B;
 }
 
-.feedback-btn{
+.explore-btn:hover {
+    background-color: #F4A261;
+    color: white;
+}
+
+.feedback-btn {
     background-color: transparent;
     color: white;
     border: 1px solid white;
+}
+
+.feedback-btn:hover{
+    background-color: #F4A261;
+    color: white;
+    border: 1px solid #F4A261;
 }

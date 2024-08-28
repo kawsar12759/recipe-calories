@@ -3,6 +3,17 @@
     color: #150B2B;
 }
 
+.prepare-btn:hover{
+    background-color: #F4A261;
+    color: white;
+}
+
+
+.prepare-btn:active{
+    background-color: #F4A261;
+    color: white;
+    transform: scale(0.95);
+}
 .want-to-cook-items {
     background-color: rgba(40, 40, 40, 0.03);
     color: rgba(40, 40, 40, 0.7);

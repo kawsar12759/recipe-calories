@@ -1,8 +1,14 @@
+import React from 'react';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { useEffect, useState } from 'react';
 import './Recipes.css'
 import Recipe from '../Recipe/Recipe';
 import WantTOCook from '../WantToCook/WantTOCook';
 import CurrentlyCooking from '../CurrentlyCooking/CurrentlyCooking';
+
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [wantToCookRecipes, setWantToCookRecipes] = useState([]);
@@ -10,16 +16,29 @@ const Recipes = () => {
     const [totalTime, setTotalTime] = useState(0);
     const [totalCalories, setTotalCalories] = useState(0);
 
+
     const handleWantToCookBtn = recipe => {
-        const newWantToCookRecipes = [...wantToCookRecipes, recipe];
-        const updatedNewWantToCookRecipes = arrangeOrderOfWantToCook(newWantToCookRecipes);
-        setWantToCookRecipes(updatedNewWantToCookRecipes);
+        let matched = false;
+        wantToCookRecipes.forEach(rec => {
+            if (rec.recipe_id === recipe.recipe_id) {
+                matched = true;
+                notify();
+            }
+        })
+        if (!matched) {
+            console.log('hoho');
+            const newWantToCookRecipes = [...wantToCookRecipes, recipe];
+            const updatedNewWantToCookRecipes = arrangeOrderOfWantToCook(newWantToCookRecipes);
+            setWantToCookRecipes(updatedNewWantToCookRecipes);
+        }
 
     }
 
+    const notify = () => toast("Recipe Already Added!");
+
     function createDeepCopy(object) {
         return JSON.parse(JSON.stringify(object));
-      }
+    }
 
     function arrangeOrderOfWantToCook(unorderedRecipes) {
         let count = 0;
@@ -69,6 +88,7 @@ const Recipes = () => {
         <div>
             <h3 className="text-4xl font-semibold text-center mb-6">Our Recipes</h3>
             <p className="recipes-para-text text-base text-center px-24 mb-12">Discover a world of deliciousness with our curated collection of recipes. From quick and easy weeknight meals to gourmet feasts, we have something to satisfy every craving. Our recipes are designed to be easy to follow and packed with flavor. Let's cook together!</p>
+            <ToastContainer />
             <div className='w-100 flex'>
                 <div className='recipes-container w-3/5'>
                     {
@@ -117,7 +137,7 @@ const Recipes = () => {
                             }
                             <tr className='text-base font-medium total-time-calories h-16'>
                                 <td></td>
-                                <td className='w-2/5'></td>
+                                <td className='w-2/5'>Total</td>
                                 <td>{totalTime} minutes</td>
                                 <td>{totalCalories} calories</td>
                             </tr>

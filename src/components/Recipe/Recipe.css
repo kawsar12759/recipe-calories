@@ -24,7 +24,18 @@
     color: #150B2B;
 }
 
+.want-to-cook-btn:hover {
+    background-color: #F4A261;
+    color: white;
+}
 
-thead{
+
+.want-to-cook-btn:active{
+    background-color: #F4A261;
+    color: white;
+    transform: scale(0.95);
+}
+
+thead {
     color: #878787;
 }
