@@ -3,19 +3,21 @@ const Recipe = ({ recipe, handleWantToCookBtn }) => {
     const { recipe_image, recipe_name, short_description, ingredients, preparing_time, calories } = recipe
     return (
         <div className="border-2 p-5 rounded-lg">
-            <div>
+            <div className='flex flex-col h-full'>
                 <img className="rounded-lg recipe-img mb-5" src={recipe_image} alt="" />
-                <div className='h-24'>
-                    <h4 className='text-xl font-semibold mb-2'>{recipe_name}</h4>
-                    <p className='text-base font-normal recipe-short-description mb-4'>{short_description}</p>
+                <div className='grow'>
+                    <div className='h-28'>
+                        <h4 className='text-xl font-semibold mb-2'>{recipe_name}</h4>
+                        <p className='text-base font-normal recipe-short-description mb-4'>{short_description}</p>
+                    </div>
+                    <hr className='hr-line mb-4' />
+                    <h5 className='text-lg font-medium mb-3'>Ingredients: {ingredients.length}</h5>
+                    <ul className='list-disc list-inside text-lg ingredients-list'>
+                        {
+                            ingredients.map((ingredient, idx) => <li key={idx}>{ingredient}</li>)
+                        }
+                    </ul>
                 </div>
-                <hr className='hr-line mb-4' />
-                <h5 className='text-lg font-medium mb-3'>Ingredients: {ingredients.length}</h5>
-                <ul className='list-disc list-inside text-lg ingredients-list'>
-                    {
-                        ingredients.map((ingredient, idx) => <li key={idx}>{ingredient}</li>)
-                    }
-                </ul>
                 <hr className='hr-line mt-4 mb-4' />
                 <div className="flex text-base time-and-calorie mb-4">
                     <div className="flex items-center mr-7">

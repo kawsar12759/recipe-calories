@@ -7,7 +7,7 @@ import Recipes from './components/Recipes/Recipes'
 function App() {
 
   return (
-    <div className='w-5/6 mx-auto py-6'>
+    <div style={{minWidth:'950px'}} className='w-5/6 mx-auto py-6'>
       <Navbar></Navbar>
       <Header></Header>
       <Recipes></Recipes>

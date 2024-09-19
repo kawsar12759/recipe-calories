@@ -4,7 +4,7 @@ import profile from '../../images/profile.png';
 
 const Navbar = () => {
     return (
-        <div className='flex items-center justify-between mb-8'>
+        <div className='flex items-center px-4 justify-between mb-8'>
             <div>
                 <h3 className="text-3xl font-bold">Recipe Caloriz</h3>
             </div>

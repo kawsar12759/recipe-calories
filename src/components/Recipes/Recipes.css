@@ -2,11 +2,7 @@
     color: rgb(21, 11, 43, 0.6);
 }
 
-.recipes-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
+
 
 .total-time-calories {
     color: rgba(40, 40, 40, 0.8);
